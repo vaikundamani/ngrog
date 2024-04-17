@@ -1,0 +1,63 @@
+First Create This Database and Tables.All Code are Available in Bottom. Next Do this Steps.
+
+Application Run Instructions
+
+1.go to databasemodel package 
+2.select ConnectionLogin.class File
+3.change your user name and  password
+4.then go to inputviews package
+5.select ApolloBank.class fie
+6.run this class.
+Then Create Your ApolloBank Account and start Journey
+
+***********************************************************************************************
+
+CREATE DATABASE apollobank;
+
+USE apollobank;
+
+
+CREATE TABLE users (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(20),
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id)
+) AUTO_INCREMENT 1001;
+
+
+
+CREATE TABLE accounts (
+    account_id INT NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    account_type ENUM('Saving', 'Normal') NOT NULL,
+    branch VARCHAR(20) NOT NULL DEFAULT 'Chennai',
+    ifsc VARCHAR(20) NOT NULL DEFAULT 'AUTB0000473',
+    balance DECIMAL(12, 2) NOT NULL DEFAULT 0.00,
+    PRIMARY KEY (account_id),
+    INDEX (user_id)
+)AUTO_INCREMENT 60010025;
+
+
+
+CREATE TABLE transactions (
+    account_id INT,
+    transaction_type ENUM('Deposit', 'Withdraw', 'Transfer', 'Receive'),
+    amount DECIMAL(12, 2) NOT NULL,
+    accountholder_name VARCHAR(20),
+    accountholder_number INT,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE customer_care (
+    username VARCHAR(20),
+    compliance TEXT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+***********************************************************************************************
